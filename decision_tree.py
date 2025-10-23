@@ -1,0 +1,42 @@
+# Step 1: Import libraries
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+import matplotlib.pyplot as plt
+
+# Step 2: Load dataset
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['target'] = iris.target
+print("Dataset Loaded Successfully")
+print(df.head())
+
+# Step 3: Split data into train and test sets
+X = df.iloc[:, :-1]  # features
+y = df['target']     # target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 4: Build and train Decision Tree
+model = DecisionTreeClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# Step 5: Make predictions and evaluate
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"\nAccuracy: {accuracy}")
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+
+# Step 6: Visualize the Decision Tree
+plt.figure(figsize=(15, 10))
+plot_tree(model, feature_names=iris.feature_names, class_names=iris.target_names, filled=True)
+plt.title("Decision Tree Visualization")
+plt.show()
+
+# Step 7: Save analysis to file
+with open("decision_tree_analysis.txt", "w") as file:
+    file.write(f"Decision Tree Model Accuracy: {accuracy}\n\n")
+    file.write("Classification Report:\n")
+    file.write(classification_report(y_test, y_pred))
+print("\n✅ Output saved to decision_tree_analysis.txt")
