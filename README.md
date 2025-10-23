@@ -58,4 +58,7 @@ Conclusion
 Through this task, I learned how to build, train, visualize, and analyze a Decision Tree model using scikit-learn. The process strengthened my understanding of supervised learning, feature importance, and decision boundaries. Using VS Code as the programming environment made it easy to run, debug, and visualize results effectively.
 Overall, this task enhanced my skills in data preprocessing, model building, evaluation, and visualization — forming a strong foundation for future machine learning and data science projects.
 
+OUTPUT :
+
+<img width="1500" height="805" alt="Image" src="https://github.com/user-attachments/assets/bbc96a76-6f5d-4761-aec3-4ac38f35f2e1" />
 
